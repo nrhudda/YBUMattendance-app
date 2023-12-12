@@ -17,7 +17,7 @@
 @section('content')
     <div class="row" style="margin-top: 70px">
         <div class="col">
-            <form action="POST" action="/presensi/storeizin" id="formIzin">
+            <form method="POST" action="/presensi/storeizin" id="formIzin" enctype="multipart/form-data">
             @csrf
                 <div class="row">
                     <div class="col">
@@ -43,7 +43,7 @@
                             <textarea name="keterangan" id="keterangan" cols="30" rows="5" class="form-control" placeholder="keterangan"></textarea>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary w-100">Submit</button>
+                            <button type="submit" class="btn btn-primary w-100">ajukan</button>
                         </div>
                     </div>
                 </div>
@@ -53,41 +53,41 @@
 @endsection
 
 @push('myscript')
-    <script>
-        var currYear = (new Date()).getFullYear();
-
-        $(document).ready(function() {
-            $(".datepicker").datepicker({
-            format: "dd-mm-yyyy"
+<script>
+    var currYear = (new Date()).getFullYear();
+    $(document).ready(function() {
+        $(".datepicker").datepicker({
+            format: "yyyy-mm-dd"
         });
-
-    $("#formIzin").submit(function(){
-        var tanggalizin = $("#tanggalizin").val();
-        var status = $("#status").val();
-        var keterangan = $("#keterangan").val();
-        if(tanggalizin==""){
-            Swal.fire({
-                title: 'Opps!',
-                text: 'Tanggal tidak boleh kosong!',
-                icon: 'warning'
-            });
-            return false;
-        }else if(status==""){
-            Swal.fire({
-                title: 'Opps!',
-                text: 'status tidak boleh kosong!',
-                icon: 'warning'
-            });
-            return false;
-        }else if(keterangan==""){
-            Swal.fire({
-                title: 'Opps!',
-                text: 'keterangan tidak boleh kosong!',
-                icon: 'warning'
-            });
-            return false;
-        };
+        $("#formIzin").submit(function(){
+            var tanggalizin = $("#tanggalizin").val();
+            var status = $("#status").val();
+            var keterangan = $("#keterangan").val();
+            if(tanggalizin==""){
+                Swal.fire({
+                        title: 'Opps!',
+                        text: 'Tanggal tidak boleh kosong',
+                        icon: 'warning'
+                    });
+                return false;
+            }else if(status==""){
+                Swal.fire({
+                        title: 'Opps!',
+                        text: 'status tidak boleh kosong',
+                        icon: 'warning'
+                    });
+                return false;
+            }else if(keterangan==""){
+                Swal.fire({
+                        title: 'Opps!',
+                        text: 'keterangan tidak boleh kosong',
+                        icon: 'warning'
+                    });
+                return false;
+            }
+        });
     });
-    </script>
+
+</script>
 @endpush
 
