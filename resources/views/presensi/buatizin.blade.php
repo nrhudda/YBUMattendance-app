@@ -2,6 +2,25 @@
 
 @section('header')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <style>
+    .datepicker-modal {
+        max-height: 480px !important;
+        border-radius:10px;
+    }
+    .datepicker-date-display{
+        background-color: #1E74FD !important;
+        color: #fff !important;
+
+    }
+    .datepicker-table td.is-today,.datepicker-cancel, .datepicker-done,.dropdown-content li>a, .dropdown-content li>span{
+        color:#1E74FD !important;
+    }
+
+    .datepicker-table td.is-selected{
+        background-color: #1E74FD !important;
+        color: #fff !important;
+    }
+    </style>
     <!-- App Header -->
     <div class="appHeader bg-primary text-light">
         <div class="left">

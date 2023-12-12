@@ -29,8 +29,35 @@
         <div class="alert alert-danger">
             {{ $messageError }}
         </div>
-
     @endif
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        @foreach ($dataizin as $d)
+            <ul class="listview image-listview">
+                <li>
+                    <div class="item">
+                        <div class="in">
+                            <div>
+                                <b>
+                                    {{ date("d-m-Y", strtotime($d->tanggal_izin))}}
+                                    <span class="text- {{ $d->status=="s" ? "danger" : "warning" }}">({{$d->status== "s" ? "sakit" : "Izin" }})</span>
+                                </b><br>
+                                <small class="text-muted">{{ $d->keterangan }}</small>
+                            </div>
+                            @if ($d->status_approved ==0)
+                                <span class="badge bg-warning">Menunggu</span>
+                            @elseif ($d->status_approved ==1)
+                                <span class="badge bg-success">Disetujui</span>
+                            @elseif ($d->status_approved ==2)
+                                <span class="badge bg-danger">Ditolak</span>
+                            @endif
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        @endforeach
     </div>
 </div>
 <div class="fab-button bottom-right" style="margin-bottom: 60px">
